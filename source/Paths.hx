@@ -204,7 +204,7 @@ class Paths
 	{
 		var songKey:String = '${song.toLowerCase().replace(' ', '-')}/Voices';
 		var voices = returnSound('songs', songKey);
-		return voices
+		return voices;
 	}
 
 	inline static public function inst(song:String):Any
