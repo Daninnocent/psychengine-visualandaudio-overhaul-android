@@ -191,6 +191,7 @@ enum FlxDPadMode
 enum FlxActionMode
 {
 	NONE;
+        SPACE;
 	A;
     B;
  	D;   
