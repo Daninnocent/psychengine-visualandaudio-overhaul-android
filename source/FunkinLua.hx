@@ -628,7 +628,7 @@ class FunkinLua {
 				case 'back': key = PlayState.instance.getControl('BACK');
 				case 'pause': key = PlayState.instance.getControl('PAUSE');
 				case 'reset': key = PlayState.instance.getControl('RESET');
-				case 'space': key = FlxG.keys.justPressed.SPACE;//an extra key for convinience
+				case 'space': key = ui.FlxVirtualPad.buttonA.JustPressed;//an extra key for convinience
 			}
 			return key;
 		});
@@ -639,7 +639,7 @@ class FunkinLua {
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
-				case 'space': key = FlxG.keys.pressed.SPACE;//an extra key for convinience
+				case 'space': key = ui.FlxVirtualPad.buttonA.pressed;//an extra key for convinience
 			}
 			return key;
 		});
@@ -650,7 +650,7 @@ class FunkinLua {
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP_R');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_R');
-				case 'space': key = FlxG.keys.justReleased.SPACE;//an extra key for convinience
+				case 'space': key = ui.FlxVirtualPad.buttonA.justReleased;//an extra key for convinience
 			}
 			return key;
 		});
@@ -902,6 +902,11 @@ class FunkinLua {
 					//trace('added a thing: ' + tag);
 				}
 			}
+		});
+		Lua_helper.add_callback(lua, "addVirtualPad", function(dPad:String, actions:String, camera:String = '') {
+                      var shit:ModchartvirtualPads = new ModchartvirtualPads(dPad, actions)
+		      shit.cameras = [cameraFromString(camera)];
+		      getInstance().add(shit);
 		});
 		Lua_helper.add_callback(lua, "setGraphicSize", function(obj:String, x:Int, y:Int = 0) {
 			if(PlayState.instance.modchartSprites.exists(obj)) {
@@ -1743,6 +1748,12 @@ class ModchartSprite extends FlxSprite
 	//public var isInFront:Bool = false;
 }
 
+class ModchartvirtualPads extends FlxVirtualPad
+{
+	public var wasAdded:Bool = false;
+}
+					
+					
 class ModchartText extends FlxText
 {
 	public var wasAdded:Bool = false;
