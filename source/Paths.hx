@@ -28,6 +28,12 @@ class Paths
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 
 	#if MODS_ALLOWED
+		
+	#if (haxe >= "4.0.0")
+	public static var customSoundsLoaded:Map<String, Sound> = new Map();
+	#else
+	public static var customSoundsLoaded:Map<String, Sound> = new Map<String, Sound>();
+	#end
 	
 	public static var ignoreModFolders:Array<String> = [
 		'characters',
