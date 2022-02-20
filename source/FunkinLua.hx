@@ -30,6 +30,7 @@ import sys.io.File;
 import Type.ValueType;
 import Controls;
 import DialogueBoxPsych;
+import ui.FlxVirtualPad
 
 #if desktop
 import Discord;
