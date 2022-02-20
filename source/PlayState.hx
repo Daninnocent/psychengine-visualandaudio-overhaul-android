@@ -59,6 +59,7 @@ import sys.FileSystem;
 
 #if mobileC
 import ui.Mobilecontrols;
+import ui.FlxVirtualPad;
 #end
 
 using StringTools;
@@ -85,6 +86,7 @@ class PlayState extends MusicBeatState
 	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
 	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
+	public var modchartVirtualPads:Map<String, FlxVirtualPad> = new Map<String, FlxVirtualPad>();
 	public var modchartTexts:Map<String, ModchartText> = new Map<String, ModchartText>();
 
 	//event variables
