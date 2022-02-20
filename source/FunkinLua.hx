@@ -628,7 +628,7 @@ class FunkinLua {
 				case 'back': key = PlayState.instance.getControl('BACK');
 				case 'pause': key = PlayState.instance.getControl('PAUSE');
 				case 'reset': key = PlayState.instance.getControl('RESET');
-				case 'space': key = virtualPad.buttonA.JustPressed;//an extra key for convinience
+				case 'space': key = virtualPad.buttonA.justPressed;//an extra key for convinience
 			}
 			return key;
 		});
@@ -903,8 +903,8 @@ class FunkinLua {
 				}
 			}
 		});
-		Lua_helper.add_callback(lua, "addVirtualPad", function(dPad:String, actions:String, camera:String = '') {
-                      var shit:ModchartvirtualPads = new ModchartvirtualPads(dPad, actions);
+		Lua_helper.add_callback(lua, "addVirtualPad", function(dPad1:String, actions1:String, camera:String = '') {
+                      var shit:ModchartvirtualPads = new ModchartvirtualPads(dPad1, actions1);
 		      shit.cameras = [cameraFromString(camera)];
 		      getInstance().add(shit);
 		});
