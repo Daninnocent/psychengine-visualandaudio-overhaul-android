@@ -664,8 +664,8 @@ class FunkinLua {
 				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
 				        case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.justPressed;
 			        }
-			        return key;
 			 }
+			 return key;
 		});
 		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(name:String, tag:String) {
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {
@@ -677,8 +677,8 @@ class FunkinLua {
 				         case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
 				         case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.pressed;
 			         }
-			         return key;
 			}
+			return key;
 		});
 		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(name:String, tag:String) {
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {
@@ -690,8 +690,8 @@ class FunkinLua {
 				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
 				        case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.justReleased;
 			        }
-			        return key;
 			}
+			return key;
 		});
 		// dont know if i'll add more buttons but for now its just the A button 
 		Lua_helper.add_callback(lua, "addCharacterToList", function(name:String, type:String) {
