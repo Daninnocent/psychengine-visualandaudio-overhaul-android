@@ -655,8 +655,8 @@ class FunkinLua {
 			return key;
 		});
 		Lua_helper.add_callback(lua, "buttonJustPressedOnVirtualPad", function(tag:String, name:String) {
-		   if(PlayState.instance.modchartSprites.exists(tag)) {
-			var shit:ModchartSprite = PlayState.instance.modchartSprites.get(tag);		
+		   if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+			var shit:ModchartSprite = PlayState.instance.modchartVirtualPads.get(tag);		
 			var key:Bool = false;			
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
@@ -669,8 +669,8 @@ class FunkinLua {
 		    }
 		});
 		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(tag:String, name:String) {
-		   if(PlayState.instance.modchartSprites.exists(tag)) {
-			var shit:ModchartSprite = PlayState.instance.modchartSprites.get(tag);		
+		   if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+			var shit:ModchartSprite = PlayState.instance.modchartVirtualPads.get(tag);		
 			var key:Bool = false;			
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
@@ -683,8 +683,8 @@ class FunkinLua {
 		    }
 		});
 		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(tag:String, name:String) {
-		   if(PlayState.instance.modchartSprites.exists(tag)) {
-			var shit:ModchartSprite = PlayState.instance.modchartSprites.get(tag);		
+		   if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+			var shit:ModchartSprite = PlayState.instance.modchartVirtualPads.get(tag);		
 			var key:Bool = false;			
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
@@ -821,7 +821,7 @@ class FunkinLua {
 		      resetVirtualPadsTag(tag);
 		      var shit:ModchartvirtualPads = new ModchartvirtualPads(DPad, Action);
 		      shit.cameras = [cameraFromString(camera)];
-		      PlayState.instance.modchartSprites.set(tag, shit);		  
+		      PlayState.instance.modchartVirtualPads.set(tag, shit);		  
 		});
 		Lua_helper.add_callback(lua, "makeLuaSprite", function(tag:String, image:String, x:Float, y:Float) {
 			tag = tag.replace('.', '');
