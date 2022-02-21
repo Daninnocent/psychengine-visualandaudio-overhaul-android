@@ -816,7 +816,7 @@ class FunkinLua {
 				default: PlayState.instance.boyfriend.dance();
 			}
 		});
-		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, DPad:FlxDPadMode, Action:FlxActionMode) {
+		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, DPad:FlxDPadMode, Action:FlxActionMode, camera:String) {
 		      tag = tag.replace('.', '');
 		      resetVirtualPadsTag(tag);
 		      var shit:ModchartvirtualPads = new ModchartvirtualPads(DPad, Action);
