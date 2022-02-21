@@ -617,7 +617,7 @@ class FunkinLua {
 			if(!color.startsWith('0x')) color = '0xff' + color;
 			return Std.parseInt(color);
 		});
-		Lua_helper.add_callback(lua, "keyJustPressed", function(virtualPad:FlxVirtualPad, name:String) {
+		Lua_helper.add_callback(lua, "keyJustPressed", function(name:String, virtualPad:FlxVirtualPad) {
 			var key:Bool = false;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
@@ -632,7 +632,7 @@ class FunkinLua {
 			}
 			return key;
 		});
-		Lua_helper.add_callback(lua, "keyPressed", function(virtualPad:FlxVirtualPad, name:String) {
+		Lua_helper.add_callback(lua, "keyPressed", function(name:String, virtualPad:FlxVirtualPad) {
 			var key:Bool = false;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
@@ -643,7 +643,7 @@ class FunkinLua {
 			}
 			return key;
 		});
-		Lua_helper.add_callback(lua, "keyReleased", function(virtualPad:FlxVirtualPad, name:String) {
+		Lua_helper.add_callback(lua, "keyReleased", function(name:String, virtualPad:FlxVirtualPad) {
 			var key:Bool = false;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
@@ -903,9 +903,8 @@ class FunkinLua {
 				}
 			}
 		});
-		Lua_helper.add_callback(lua, "addVirtualPad", function(controls:Controls, camera:String = '') {
+		Lua_helper.add_callback(lua, "addVirtualPad", function(camera:String = '') {
                       var shit:ModchartvirtualPads = new ModchartvirtualPads(NONE, SPACE);
-		      controls.setVirtualPadNOTES(shit, NONE, SPACE);
 		      shit.cameras = [cameraFromString(camera)];
 		      getInstance().add(shit);
 		});
