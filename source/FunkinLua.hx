@@ -655,7 +655,7 @@ class FunkinLua {
 			return key;
 		});
 		Lua_helper.add_callback(lua, "buttonJustPressedOnVirtualPad", function(tag:String, name:String) {
-			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads
+			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads;
 				var key:Bool = false;			
 			        switch(name) {
 				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
@@ -667,7 +667,7 @@ class FunkinLua {
 			        return key;
 		});
 		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(name:String) {
-			         var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads
+			         var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads;
 				 var key:Bool = false;			
 			         switch(name) {
 				         case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
@@ -679,7 +679,7 @@ class FunkinLua {
 			         return key;
 		});
 		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(name:String) {
-			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads
+			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads;
 				var key:Bool = false;			
 			        switch(name) {
 				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
