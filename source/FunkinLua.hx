@@ -1579,7 +1579,7 @@ class FunkinLua {
 			return;
 		}
 		
-		var pee:ModchartvirtualPads = PlayState.instance.modchartvirtualPads.get(tag);
+		var pee:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);
 		pee.kill();
 		if(pee.wasAdded) {
 			PlayState.instance.remove(pee, true);
