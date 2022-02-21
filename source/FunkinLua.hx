@@ -954,7 +954,7 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "addVirtualPads", function(tag:String) {
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-				var shit:ModchartvirtualPads = PlayState.instance.modchartvirtualPads.get(tag);
+				var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);
 				if(!shit.wasAdded) {
 					getInstance().add(shit);
 					shit.wasAdded = true;
