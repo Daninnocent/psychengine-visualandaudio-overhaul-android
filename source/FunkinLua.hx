@@ -663,7 +663,7 @@ class FunkinLua {
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
-				case 'a': key = shit.buttonA.justPressed
+				case 'a': key = shit.buttonA.justPressed;
 			}
 			return key;
 		    }
@@ -677,7 +677,7 @@ class FunkinLua {
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
-				case 'a': key = shit.buttonA.pressed
+				case 'a': key = shit.buttonA.pressed;
 			}
 			return key;
 		    }
@@ -691,7 +691,7 @@ class FunkinLua {
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
-				case 'a': key = shit.buttonA.justReleased
+				case 'a': key = shit.buttonA.justReleased;
 			}
 			return key;
 		    }
