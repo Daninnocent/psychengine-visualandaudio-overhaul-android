@@ -798,10 +798,10 @@ class FunkinLua {
 				default: PlayState.instance.boyfriend.dance();
 			}
 		});
-		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, ?arrows:FlxDPadMode, ?actions:FlxActionMode, camera:String) {
+		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, camera:String) {
 		      tag = tag.replace('.', '');
 		      resetVirtualPadsTag(tag);
-		      var shit:ModchartvirtualPads = new ModchartvirtualPads(arrows, actions);
+		      var shit:ModchartvirtualPads = new ModchartvirtualPads(NONE, SPACE);
 		      shit.cameras = [cameraFromString(camera)];
 		      PlayState.instance.modchartVirtualPads.set(tag, shit);		  
 		});
