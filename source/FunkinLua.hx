@@ -655,8 +655,7 @@ class FunkinLua {
 			return key;
 		});
 		Lua_helper.add_callback(lua, "buttonJustPressedOnVirtualPad", function(tag:String, name:String) {
-			if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);	
+			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads
 				var key:Bool = false;			
 			        switch(name) {
 				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
@@ -666,11 +665,9 @@ class FunkinLua {
 				        case 'a': key = shit.buttonA.justPressed;
 			        }
 			        return key;
-			}
 		});
-		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(tag:String, name:String) {
-	                if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-			         var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);
+		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(name:String) {
+			         var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads
 				 var key:Bool = false;			
 			         switch(name) {
 				         case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
@@ -680,11 +677,9 @@ class FunkinLua {
 				         case 'a': key = shit.buttonA.pressed;
 			         }
 			         return key;
-		        }
 		});
-		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(tag:String, name:String) {
-		        if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);	
+		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(name:String) {
+			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads
 				var key:Bool = false;			
 			        switch(name) {
 				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
@@ -694,7 +689,6 @@ class FunkinLua {
 				        case 'a': key = shit.buttonA.justReleased;
 			        }
 			        return key;
-			}
 		});
 		// dont know if i'll add more buttons but for now its just the A button 
 		Lua_helper.add_callback(lua, "addCharacterToList", function(name:String, type:String) {
