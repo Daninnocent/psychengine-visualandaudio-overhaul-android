@@ -617,8 +617,9 @@ class FunkinLua {
 			if(!color.startsWith('0x')) color = '0xff' + color;
 			return Std.parseInt(color);
 		});
-		Lua_helper.add_callback(lua, "keyJustPressed", function(name:String, virtualPad:FlxVirtualPad) {
+		Lua_helper.add_callback(lua, "keyJustPressed", function(name:String) {
 			var key:Bool = false;
+			var virtualPad:FlxVirtualPad;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
@@ -632,8 +633,9 @@ class FunkinLua {
 			}
 			return key;
 		});
-		Lua_helper.add_callback(lua, "keyPressed", function(name:String, virtualPad:FlxVirtualPad) {
+		Lua_helper.add_callback(lua, "keyPressed", function(name:String) {
 			var key:Bool = false;
+			var virtualPad:FlxVirtualPad;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
@@ -643,8 +645,9 @@ class FunkinLua {
 			}
 			return key;
 		});
-		Lua_helper.add_callback(lua, "keyReleased", function(name:String, virtualPad:FlxVirtualPad) {
+		Lua_helper.add_callback(lua, "keyReleased", function(name:String) {
 			var key:Bool = false;
+			var virtualPad:FlxVirtualPad;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
