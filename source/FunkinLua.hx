@@ -631,7 +631,6 @@ class FunkinLua {
 				case 'back': key = PlayState.instance.getControl('BACK');
 				case 'pause': key = PlayState.instance.getControl('PAUSE');
 				case 'reset': key = PlayState.instance.getControl('RESET');
-				case 'space': key = virtualPad.buttonA.justPressed;//an extra key for convinience
 			}
 			return key;
 		});
@@ -642,21 +641,62 @@ class FunkinLua {
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
-				case 'space': key = virtualPad.buttonA.pressed;//an extra key for convinience
 			}
 			return key;
 		});
 		Lua_helper.add_callback(lua, "keyReleased", function(name:String) {
-			var key:Bool = false;
+			var key:Bool = false;			
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
 				case 'up': key = PlayState.instance.getControl('NOTE_UP_R');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_R');
-				case 'space': key = virtualPad.buttonA.justReleased;//an extra key for convinience
 			}
 			return key;
 		});
+		Lua_helper.add_callback(lua, "buttonJustPressedOnVirtualPad", function(tag:String, name:String) {
+		   if(PlayState.instance.modchartSprites.exists(tag)) {
+			var shit:ModchartSprite = PlayState.instance.modchartSprites.get(tag);		
+			var key:Bool = false;			
+			switch(name) {
+				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
+				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
+				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
+				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
+				case 'a': key = shit.buttonA.justPressed
+			}
+			return key;
+		    }
+		});
+		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(tag:String, name:String) {
+		   if(PlayState.instance.modchartSprites.exists(tag)) {
+			var shit:ModchartSprite = PlayState.instance.modchartSprites.get(tag);		
+			var key:Bool = false;			
+			switch(name) {
+				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
+				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
+				case 'up': key = PlayState.instance.getControl('NOTE_UP');
+				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
+				case 'a': key = shit.buttonA.pressed
+			}
+			return key;
+		    }
+		});
+		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(tag:String, name:String) {
+		   if(PlayState.instance.modchartSprites.exists(tag)) {
+			var shit:ModchartSprite = PlayState.instance.modchartSprites.get(tag);		
+			var key:Bool = false;			
+			switch(name) {
+				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
+				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
+				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
+				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
+				case 'a': key = shit.buttonA.justReleased
+			}
+			return key;
+		    }
+		});
+		// dont know if i'll add more buttons but for now its just the A button 
 		Lua_helper.add_callback(lua, "addCharacterToList", function(name:String, type:String) {
 			var charType:Int = 0;
 			switch(type.toLowerCase()) {
@@ -776,7 +816,13 @@ class FunkinLua {
 				default: PlayState.instance.boyfriend.dance();
 			}
 		});
-
+		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, DPad:FlxDPadMode, Action:FlxActionMode) {
+		      tag = tag.replace('.', '');
+		      resetVirtualPadsTag(tag);
+		      var shit:ModchartvirtualPads = new ModchartvirtualPads(DPad, Action);
+		      shit.cameras = [cameraFromString(camera)];
+		      PlayState.instance.modchartSprites.set(tag, shit);		  
+		});
 		Lua_helper.add_callback(lua, "makeLuaSprite", function(tag:String, image:String, x:Float, y:Float) {
 			tag = tag.replace('.', '');
 			resetSpriteTag(tag);
@@ -906,10 +952,15 @@ class FunkinLua {
 				}
 			}
 		});
-		Lua_helper.add_callback(lua, "addVirtualPad", function(camera:String = '') {
-                      var shit:ModchartvirtualPads = new ModchartvirtualPads(NONE, SPACE);
-		      shit.cameras = [cameraFromString(camera)];
-		      getInstance().add(shit);
+		Lua_helper.add_callback(lua, "addVirtualPads", function(tag:String) {
+			if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+				var shit:ModchartVirtualPads = PlayState.instance.modchartVirtualPads.get(tag);
+				if(!shit.wasAdded) {
+					getInstance().add(shit);
+					shit.wasAdded = true;
+					//trace('added a thing: ' + tag);
+				}
+			}
 		});
 		Lua_helper.add_callback(lua, "setGraphicSize", function(obj:String, x:Int, y:Int = 0) {
 			if(PlayState.instance.modchartSprites.exists(obj)) {
@@ -1521,6 +1572,20 @@ class FunkinLua {
 		}
 		pee.destroy();
 		PlayState.instance.modchartTexts.remove(tag);
+	}
+			
+	function resetVirtualPadsTag(tag:String) {
+		if(!PlayState.instance.modchartVirtualPads.exists(tag)) {
+			return;
+		}
+		
+		var pee:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);
+		pee.kill();
+		if(pee.wasAdded) {
+			PlayState.instance.remove(pee, true);
+		}
+		pee.destroy();
+		PlayState.instance.modchartVirtualPads.remove(tag);
 	}
 
 	function resetSpriteTag(tag:String) {
