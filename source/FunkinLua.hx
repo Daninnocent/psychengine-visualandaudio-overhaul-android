@@ -655,46 +655,46 @@ class FunkinLua {
 			return key;
 		});
 		Lua_helper.add_callback(lua, "buttonJustPressedOnVirtualPad", function(tag:String, name:String) {
-		if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-			var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);		
-			var key:Bool = false;			
-			switch(name) {
-				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
-				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
-				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
-				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
-				case 'a': key = shit.buttonA.justPressed;
+			if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);	
+				var key:Bool = false;			
+			        switch(name) {
+				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
+				        case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
+				        case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
+				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
+				        case 'a': key = shit.buttonA.justPressed;
+			        }
+			        return key;
 			}
-			return key;
-	  }
 		});
 		Lua_helper.add_callback(lua, "buttonPressedOnVirtualPad", function(tag:String, name:String) {
-	  if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-			var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);		
-			var key:Bool = false;			
-			switch(name) {
-				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
-				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
-				case 'up': key = PlayState.instance.getControl('NOTE_UP');
-				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
-				case 'a': key = shit.buttonA.pressed;
-			}
-			return key;
-		}
+	                if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+			         var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);
+				 var key:Bool = false;			
+			         switch(name) {
+				         case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
+				         case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
+				         case 'up': key = PlayState.instance.getControl('NOTE_UP');
+				         case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
+				         case 'a': key = shit.buttonA.pressed;
+			         }
+			         return key;
+		        }
 		});
 		Lua_helper.add_callback(lua, "buttonReleasedOnVirtualPad", function(tag:String, name:String) {
-		if(PlayState.instance.modchartVirtualPads.exists(tag)) {
-			var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);		
-			var key:Bool = false;			
-			switch(name) {
-				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
-				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
-				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
-				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
-				case 'a': key = shit.buttonA.justReleased;
+		        if(PlayState.instance.modchartVirtualPads.exists(tag)) {
+			        var shit:ModchartvirtualPads = PlayState.instance.modchartVirtualPads.get(tag);	
+				var key:Bool = false;			
+			        switch(name) {
+				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
+				        case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
+				        case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
+				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
+				        case 'a': key = shit.buttonA.justReleased;
+			        }
+			        return key;
 			}
-			return key;
-		}
 		});
 		// dont know if i'll add more buttons but for now its just the A button 
 		Lua_helper.add_callback(lua, "addCharacterToList", function(name:String, type:String) {
