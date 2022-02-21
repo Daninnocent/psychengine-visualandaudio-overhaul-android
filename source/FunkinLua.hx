@@ -905,6 +905,7 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "addVirtualPad", function(camera:String = '') {
                       var shit:ModchartvirtualPads = new ModchartvirtualPads(NONE, SPACE);
+		      controls.setVirtualPadNOTES(mcontrols._virtualPad, NONE, SPACE);
 		      shit.cameras = [cameraFromString(camera)];
 		      getInstance().add(shit);
 		});
