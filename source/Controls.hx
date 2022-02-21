@@ -347,8 +347,8 @@ class Controls extends FlxActionSet
 		add(_note_rightR);
 		add(_note_downR);
 		add(_accept);
-		add(_acceptR)
-	        add(_acceptP)
+		add(_acceptR);
+	        add(_acceptP);
 		add(_back);
 		add(_pause);
 		add(_reset);
@@ -388,8 +388,8 @@ class Controls extends FlxActionSet
 		add(_note_rightR);
 		add(_note_downR);
 		add(_accept);
-		add(_acceptR)
-	        add(_acceptP)
+		add(_acceptR);
+	        add(_acceptP);
 		add(_back);
 		add(_pause);
 		add(_reset);
