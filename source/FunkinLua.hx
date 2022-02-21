@@ -647,9 +647,6 @@ class FunkinLua {
 		Lua_helper.add_callback(lua, "keyReleased", function(name:String) {
 			var key:Bool = false;			
 			switch(name) {
-				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
-				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
-				case 'up': key = PlayState.instance.getControl('NOTE_UP_R');
 				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_R');
 			}
 			return key;
@@ -658,10 +655,6 @@ class FunkinLua {
 			var key:Bool = false;
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {			
 			        switch(name) {
-				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
-				        case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
-				        case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
-				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
 				        case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.justPressed;
 			        }
 			 }
@@ -671,10 +664,6 @@ class FunkinLua {
 			var key:Bool = false;
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {		
 			         switch(name) {
-				         case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
-				         case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
-				         case 'up': key = PlayState.instance.getControl('NOTE_UP');
-				         case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
 				         case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.pressed;
 			         }
 			}
@@ -684,10 +673,6 @@ class FunkinLua {
 			var key:Bool = false;
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {			
 			        switch(name) {
-				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
-				        case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
-				        case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
-				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
 				        case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.justReleased;
 			        }
 			}
@@ -813,10 +798,10 @@ class FunkinLua {
 				default: PlayState.instance.boyfriend.dance();
 			}
 		});
-		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, DPad:FlxDPadMode, Action:FlxActionMode, camera:String) {
+		Lua_helper.add_callback(lua, "makeVirtualPads", function(tag:String, ?arrows:FlxDPadMode, ?actions:FlxActionMode, camera:String) {
 		      tag = tag.replace('.', '');
 		      resetVirtualPadsTag(tag);
-		      var shit:ModchartvirtualPads = new ModchartvirtualPads(DPad, Action);
+		      var shit:ModchartvirtualPads = new ModchartvirtualPads(arrows, actions);
 		      shit.cameras = [cameraFromString(camera)];
 		      PlayState.instance.modchartVirtualPads.set(tag, shit);		  
 		});
