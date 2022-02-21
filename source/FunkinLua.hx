@@ -50,6 +50,9 @@ class FunkinLua {
 	var gonnaClose:Bool = false;
 
 	public var accessedProps:Map<String, Dynamic> = null;
+	
+	public var virtualPad:FlxVirtualPad;
+	
 	public function new(script:String) {
 		#if LUA_ALLOWED
 		lua = LuaL.newstate();
@@ -619,7 +622,6 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "keyJustPressed", function(name:String) {
 			var key:Bool = false;
-			var virtualPad:FlxVirtualPad;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
@@ -635,7 +637,6 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "keyPressed", function(name:String) {
 			var key:Bool = false;
-			var virtualPad:FlxVirtualPad;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
@@ -647,7 +648,6 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, "keyReleased", function(name:String) {
 			var key:Bool = false;
-			var virtualPad:FlxVirtualPad;
 			switch(name) {
 				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
 				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
