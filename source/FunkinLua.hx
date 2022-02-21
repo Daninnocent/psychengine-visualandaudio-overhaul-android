@@ -903,8 +903,8 @@ class FunkinLua {
 				}
 			}
 		});
-		Lua_helper.add_callback(lua, "addVirtualPad", function(dPad1, actions1, camera:String = '') {
-                      var shit:ModchartvirtualPads = new ModchartvirtualPads(dPad1, actions1);
+		Lua_helper.add_callback(lua, "addVirtualPad", function(camera:String = '') {
+                      var shit:ModchartvirtualPads = new ModchartvirtualPads(NONE, SPACE);
 		      shit.cameras = [cameraFromString(camera)];
 		      getInstance().add(shit);
 		});
