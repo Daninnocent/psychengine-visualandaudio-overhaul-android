@@ -655,6 +655,10 @@ class FunkinLua {
 			var key:Bool = false;
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {			
 			        switch(name) {
+				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
+				        case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
+				        case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
+				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');						
 				        case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.justPressed;
 			        }
 			 }
@@ -664,6 +668,10 @@ class FunkinLua {
 			var key:Bool = false;
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {		
 			         switch(name) {
+				         case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
+				         case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
+				         case 'up': key = PlayState.instance.getControl('NOTE_UP');
+				         case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');						 
 				         case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.pressed;
 			         }
 			}
@@ -673,6 +681,10 @@ class FunkinLua {
 			var key:Bool = false;
 			if(PlayState.instance.modchartVirtualPads.exists(tag)) {			
 			        switch(name) {
+				        case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
+				        case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
+				        case 'up': key = PlayState.instance.getControl('NOTE_UP_R');
+				        case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_R');						
 				        case 'a': key = PlayState.instance.modchartVirtualPads.get(tag).buttonA.justReleased;
 			        }
 			}
